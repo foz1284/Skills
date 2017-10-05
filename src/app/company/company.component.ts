@@ -8,27 +8,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./company.component.sass']
 })
 export class CompanyComponent implements OnInit {
-
-  companies:Company[] = [{
-    ID: 1,
-    Name: 'ATS'
-  }];
-  constructor(private http: HttpClient) { 
-    // var com = new Company();
-    // com.ID = 1;
-    // com.Name = 'ATS';
-
-    //this.companies.push(com);
+  companies:Company[];
   
-    
-    this.companies= [{
-      ID: 1,
-      Name: 'ATS'
-    }];
-    
+  constructor(private http: HttpClient) {    
     this.http.get('http://localhost:8080/api.php/company').subscribe(data => {
-      // Read the result field from the JSON response.
-
       this.companies = data['company']['records'];
     });
   } 
