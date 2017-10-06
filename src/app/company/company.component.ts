@@ -9,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CompanyComponent implements OnInit {
   companies:Company[];
-  
+
   constructor(private http: HttpClient) {    
-    this.http.get('http://localhost:8080/api.php/company').subscribe(data => {
-      this.companies = data['company']['records'];
+    this.http.get('http://localhost:8080/api.php/company?transform=1').subscribe(data => {
+      this.companies = data['company'];
     });
   } 
 
