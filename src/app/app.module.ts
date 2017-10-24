@@ -7,12 +7,14 @@ import { CompanyComponent } from './company/company.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { SkillComponent } from './skill/skill.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyComponent,
-    NavigationComponent
+    NavigationComponent,
+    SkillComponent
   ],
   imports: [
     HttpClientModule,
