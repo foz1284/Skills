@@ -8,20 +8,26 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { SkillComponent } from './skill/skill.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
+import { ErrorComponent } from './error/error.component';
+
+import { SkillsService } from './Skills.Service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyComponent,
     NavigationComponent,
-    SkillComponent
+    SkillComponent,
+    CompanyDetailsComponent,
+    ErrorComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SkillsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

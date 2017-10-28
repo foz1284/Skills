@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
-import { HttpClient } from '@angular/common/http';
+import { SkillsService } from '../skills.service';
 
 @Component({
   selector: 'app-company',
@@ -10,11 +10,17 @@ import { HttpClient } from '@angular/common/http';
 export class CompanyComponent implements OnInit {
   companies:Company[];
 
-  constructor(private http: HttpClient) {    
-    this.http.get('http://localhost:8080/api.php/company?transform=1').subscribe(data => {
-      this.companies = data['company'];
-    });
-  } 
+  constructor(private skillsService: SkillsService) { 
+    this.skillsService.getCompanies()
+    .then(companies =>
+      { 
+        this.companies = companies;
+      })
+    .catch(err => 
+      {
+        alert("Could not retrieve Company Data" + err); 
+      }); 
+  }  
 
   ngOnInit() {
   }

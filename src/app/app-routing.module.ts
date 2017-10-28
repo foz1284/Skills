@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
+import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { SkillComponent } from './skill/skill.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -9,11 +11,14 @@ const routes: Routes = [
     component: CompanyComponent,
     children: []
   },
+  { path: 'company', component: CompanyComponent },
+  { path: 'company/:id', component: CompanyDetailsComponent },
   {
     path: 'skill',
     component: SkillComponent,
     children: []
-  }
+  },
+  { path: 'error', component: ErrorComponent },
 ];
 
 @NgModule({
