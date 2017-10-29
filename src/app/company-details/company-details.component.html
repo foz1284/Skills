@@ -6,6 +6,11 @@
   Projects
 </p>
 
+<div  style="border:5px solid black" *ngFor="let companyProject of CurrentCompanyProjects">
+  <a class="nav-link" href="/project/{{companyProject.ID}}">{{companyProject.Name}}</a>
+  
+</div>
+
 <p>
   Skills
 </p>

@@ -12,6 +12,8 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { ErrorComponent } from './error/error.component';
 
 import { SkillsService } from './Skills.Service';
+import { ProjectComponent } from './project/project.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SkillsService } from './Skills.Service';
     NavigationComponent,
     SkillComponent,
     CompanyDetailsComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProjectComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     HttpClientModule,

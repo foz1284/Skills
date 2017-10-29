@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Company } from './company';
+import { CompanyProject } from './company-Project';
+import { Project } from './Project';
 import { COMPANIES } from './companies';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
@@ -40,18 +42,16 @@ export class SkillsService {
       .toPromise()
       .then(response =>
         {
-            return response['project'] as Project[];
+            return response['projects'] as Project[];
         })
         .catch(this.handleError); 
   }
-
-
- 
 
   private extractData(res: Response) {
     let body = res.json();
     return body.data['company'] || { };
   }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
