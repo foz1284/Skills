@@ -18,7 +18,7 @@ export class ProjectComponent implements OnInit {
       })
     .catch(err => 
       {
-        alert("Could not retrieve Company Data" + err); 
+        alert("Could not retrieve Skill Data" + err); 
       }); 
    }
 

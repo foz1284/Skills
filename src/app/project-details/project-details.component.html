@@ -1,7 +1,14 @@
 <p>
-  project-details works!
+  project-details
 </p>
 
 <p>
   {{this.Project?.Name}} Details
 </p>
+
+<p>
+  skills</p>
+
+<div  style="border:5px solid black" *ngFor="let projectSkill of CurrentProjectSkills">
+  <a class="nav-link" href="/skill/{{projectSkill.ID}}">{{projectSkill.Name}}</a>
+</div>

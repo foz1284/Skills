@@ -5,6 +5,7 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { SkillComponent } from './skill/skill.component';
+import { SkillDetailsComponent } from './skill-details/skill-details.component';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
@@ -17,11 +18,8 @@ const routes: Routes = [
   { path: 'company/:id', component: CompanyDetailsComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'project/:id', component: ProjectDetailsComponent },
-  {
-    path: 'skill',
-    component: SkillComponent,
-    children: []
-  },
+  { path: 'skill', component: SkillComponent },
+  { path: 'skill/:id', component: SkillDetailsComponent },
   { path: 'error', component: ErrorComponent },
 ];
 

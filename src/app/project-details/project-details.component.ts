@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from '@angular/router';
 import { SkillsService } from '../skills.service';
 import { Project } from '../project';
+import { Skill } from '../skill';
 
 @Component({
   selector: 'app-project-details',
@@ -12,8 +13,10 @@ import { Project } from '../project';
 export class ProjectDetailsComponent implements OnInit {
   private RequestedProjectId: number;
   private Project: Project;
+  private CurrentProjectSkills: Skill[];
 
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) { 
+    this.CurrentProjectSkills = [];
     this.route.params.subscribe( params => {
       this.RequestedProjectId = +params['id']; 
 
@@ -29,11 +32,31 @@ export class ProjectDetailsComponent implements OnInit {
         })
       .catch(err => 
         {
-          alert("Could not retrieve Company Data" + err); 
-          this.router.navigateByUrl('/company');
+          alert("Could not retrieve Project Data" + err); 
+          this.router.navigateByUrl('/project');
+        });
+
+        this.skillsService.getSkills()
+        .then(skills =>
+        {
+          this.skillsService.getProjectSkills()
+          .then(projectSkills =>
+            {
+              projectSkills.forEach(projectSkill => {
+        
+              if(projectSkill.ProjectID == this.RequestedProjectId)
+                {
+                  skills.forEach(skill => {
+                    if(skill.ID == projectSkill.ProjectID)
+                      {
+                        this.CurrentProjectSkills.push(skill);
+                      }
+                  });
+                }
+            });
+          });
         });
       });
-
   }
 
   ngOnInit() {

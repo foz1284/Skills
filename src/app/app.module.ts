@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { SkillsService } from './Skills.Service';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { SkillDetailsComponent } from './skill-details/skill-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
     CompanyDetailsComponent,
     ErrorComponent,
     ProjectComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    SkillDetailsComponent
   ],
   imports: [
     HttpClientModule,

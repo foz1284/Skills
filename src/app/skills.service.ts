@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Company } from './company';
 import { CompanyProject } from './company-Project';
 import { Project } from './Project';
+import { ProjectSkill } from './project-skill';
+import { Skill } from './Skill';
 import { COMPANIES } from './companies';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
@@ -43,6 +45,32 @@ export class SkillsService {
       .then(response =>
         {
             return response['projects'] as Project[];
+        })
+        .catch(this.handleError); 
+  }
+
+  getProjectSkills(): Promise<ProjectSkill[]> {
+    //return Promise.resolve(CompanyProjects);
+
+     return this.http.get('http://localhost:8080/api.php/projectskill?transform=1')
+      .toPromise()
+      .then(response =>
+        {
+            return response['projectskill'] as ProjectSkill[];
+        })
+        .catch(this.handleError); 
+  }
+
+  
+
+  getSkills(): Promise<Skill[]> {
+    //return Promise.resolve(CompanyProjects);
+
+     return this.http.get('http://localhost:8080/api.php/skills?transform=1')
+      .toPromise()
+      .then(response =>
+        {
+            return response['skills'] as Skill[];
         })
         .catch(this.handleError); 
   }

@@ -1,3 +1,6 @@
 <p>
   Skills
 </p>
+<div  style="border:5px solid black" *ngFor="let skill of skills">
+  <a class="nav-link" href="/skill/{{skill.ID}}">{{skill.Name}}</a>
+</div>
