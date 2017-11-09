@@ -8,6 +8,13 @@
   </div>
 
   <div class="list-group" >
+    <a class="list-group-item active" >
+        Company
+    </a>
+    <a class="list-group-item" *ngFor="let projectCompany of CurrentProjectCompanies" href="/company/{{projectCompany.ID}}">{{projectCompany.Name}}</a>
+</div>
+
+  <div class="list-group" >
       <a class="list-group-item active" >
           skills
       </a>

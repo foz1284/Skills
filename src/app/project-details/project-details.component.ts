@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SkillsService } from '../skills.service';
 import { Project } from '../project';
 import { Skill } from '../skill';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-project-details',
@@ -14,9 +15,11 @@ export class ProjectDetailsComponent implements OnInit {
   private RequestedProjectId: number;
   private Project: Project;
   private CurrentProjectSkills: Skill[];
+  private CurrentProjectCompanies: Company[];
 
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) { 
     this.CurrentProjectSkills = [];
+    this.CurrentProjectCompanies = [];
     this.route.params.subscribe( params => {
       this.RequestedProjectId = +params['id']; 
 
@@ -36,27 +39,49 @@ export class ProjectDetailsComponent implements OnInit {
           this.router.navigateByUrl('/project');
         });
 
-        this.skillsService.getSkills()
-        .then(skills =>
-        {
-          this.skillsService.getProjectSkills()
-          .then(projectSkills =>
+
+      this.skillsService.getCompanies()
+      .then(companies =>
+        { 
+          this.skillsService.getCompanyProjects()
+          .then(projectCompanies =>
             {
-              projectSkills.forEach(projectSkill => {
+              projectCompanies.forEach(companyProject => {
         
-              if(projectSkill.ProjectID == this.RequestedProjectId)
+              if(companyProject.CompanyID == this.RequestedProjectId)
                 {
-                  skills.forEach(skill => {
-                    if(skill.ID == projectSkill.ProjectID)
+                  companies.forEach(company => {
+                    if(company.ID == companyProject.ProjectID)
                       {
-                        this.CurrentProjectSkills.push(skill);
+                        this.CurrentProjectCompanies.push(company);
                       }
                   });
                 }
             });
           });
         });
+
+      this.skillsService.getSkills()
+      .then(skills =>
+      {
+        this.skillsService.getProjectSkills()
+        .then(projectSkills =>
+          {
+            projectSkills.forEach(projectSkill => {
+      
+            if(projectSkill.ProjectID == this.RequestedProjectId)
+              {
+                skills.forEach(skill => {
+                  if(skill.ID == projectSkill.ProjectID)
+                    {
+                      this.CurrentProjectSkills.push(skill);
+                    }
+                });
+              }
+          });
+        });
       });
+    });
   }
 
   ngOnInit() {
