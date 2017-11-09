@@ -1,7 +1,16 @@
-<p>
-  skill-details
-</p>
+<br />
 
-<p>
-  {{this.Skill?.Name}} Details
-</p>
+<div class="container">
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          {{this.Skill?.Name}} Details
+    </a>
+  </div>
+
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          Projects
+      </a>
+      <a class="list-group-item" *ngFor="let skillProject of CurrentSkillProjects" href="/project/{{skillProject.ID}}">{{skillProject.Name}}</a>
+  </div>
+</div>

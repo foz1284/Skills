@@ -1,4 +1,4 @@
 export class ProjectSkill {
-    CompanyID:number;
+    SkillID:number;
     ProjectID:number;
 }

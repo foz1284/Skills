@@ -1,7 +1,9 @@
-<p>
-  Companies
-</p>
-<div  style="border:5px solid black" *ngFor="let company of companies">
-    <a class="nav-link" href="/company/{{company.ID}}">{{company.Name}}</a>
+<br />
+<div class="container">
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          Companies
+      </a>
+      <a class="list-group-item" href="/company/{{company.ID}}" *ngFor="let company of companies">{{company.Name}}</a>
+  </div>
 </div>
-

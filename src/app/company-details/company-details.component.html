@@ -1,16 +1,22 @@
-<p>
-   {{this.Company?.Name}} Details
-</p>
+<br />
 
-<p>
-  Projects
-</p>
+<div class="container">
+  <div class="list-group" >
+    <a class="list-group-item active" >
+        {{this.Company?.Name}} Details
+    </a>
+  </div>
 
-<div  style="border:5px solid black" *ngFor="let companyProject of CurrentCompanyProjects">
-  <a class="nav-link" href="/project/{{companyProject.ID}}">{{companyProject.Name}}</a>
-  
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          Projects
+      </a>
+      <a class="list-group-item" *ngFor="let companyProject of CurrentCompanyProjects" href="/project/{{companyProject.ID}}">{{companyProject.Name}}</a>
+  </div>
+
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          Skills
+      </a>
+    </div>
 </div>
-
-<p>
-  Skills
-</p>

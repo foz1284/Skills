@@ -1,6 +1,10 @@
-<p>
-  Skills
-</p>
-<div  style="border:5px solid black" *ngFor="let skill of skills">
-  <a class="nav-link" href="/skill/{{skill.ID}}">{{skill.Name}}</a>
+<br />
+
+<div class="container">
+  <div class="list-group" >
+      <a class="list-group-item active" >
+          Skills
+      </a>
+      <a class="list-group-item" *ngFor="let skill of skills" href="/skill/{{skill.ID}}">{{skill.Name}}</a>
+  </div>
 </div>
