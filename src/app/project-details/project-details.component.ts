@@ -48,10 +48,10 @@ export class ProjectDetailsComponent implements OnInit {
             {
               projectCompanies.forEach(companyProject => {
         
-              if(companyProject.CompanyID == this.RequestedProjectId)
+              if(companyProject.ProjectID == this.RequestedProjectId)
                 {
                   companies.forEach(company => {
-                    if(company.ID == companyProject.ProjectID)
+                    if(company.ID == companyProject.CompanyID)
                       {
                         this.CurrentProjectCompanies.push(company);
                       }
@@ -72,7 +72,7 @@ export class ProjectDetailsComponent implements OnInit {
             if(projectSkill.ProjectID == this.RequestedProjectId)
               {
                 skills.forEach(skill => {
-                  if(skill.ID == projectSkill.ProjectID)
+                  if(skill.ID == projectSkill.SkillID)
                     {
                       this.CurrentProjectSkills.push(skill);
                     }

@@ -45,7 +45,7 @@ export class SkillDetailsComponent implements OnInit {
           {
             projectSkills.forEach(projectSkill => {
       
-            if(projectSkill.ProjectID == this.RequestedSkillId)
+            if(projectSkill.SkillID == this.RequestedSkillId)
               {
                 projects.forEach(project => {
                   if(project.ID == projectSkill.ProjectID)
