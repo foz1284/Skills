@@ -61,8 +61,6 @@ export class SkillsService {
         .catch(this.handleError); 
   }
 
-  
-
   getSkills(): Promise<Skill[]> {
     //return Promise.resolve(CompanyProjects);
 
@@ -73,6 +71,61 @@ export class SkillsService {
             return response['skills'] as Skill[];
         })
         .catch(this.handleError); 
+  }
+
+  addCompany(name)
+  {
+    return this.http.post("http://localhost:8080/api.php/company","{\"Name\":\"" + name + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+
+  addProject(name)
+  {
+    return this.http.post("http://localhost:8080/api.php/projects","{\"Name\":\"" + name + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+  
+  addCompanyProject(company:Company, project:Project)
+  {
+    return this.http.post("http://localhost:8080/api.php/companyproject","{\"CompanyID\":\"" + company.ID + "\", \"ProjectID\":\"" + project.ID + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+
+  addSkill(name)
+  {
+    return this.http.post("http://localhost:8080/api.php/skills","{\"Name\":\"" + name + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+  
+  addProjectSkill(project:Project, skill:Skill)
+  {
+    return this.http.post("http://localhost:8080/api.php/projectskill","{\"ProjectID\":\"" + project.ID + "\", \"SkillID\":\"" + skill.ID + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
   }
 
   private extractData(res: Response) {

@@ -17,6 +17,15 @@ export class ProjectDetailsComponent implements OnInit {
   private CurrentProjectSkills: Skill[];
   private CurrentProjectCompanies: Company[];
 
+
+  public AddSkill(event, item) {
+    alert('Open ' + item);
+  }
+
+  public AddCompany(event, item) {
+    alert('AddCompany ' + item);
+  }
+
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) { 
     this.CurrentProjectSkills = [];
     this.CurrentProjectCompanies = [];
@@ -82,6 +91,18 @@ export class ProjectDetailsComponent implements OnInit {
         });
       });
     });
+  }
+
+  public onSubmit(name) {
+    this.skillsService.addSkill(name).then(id => {
+      let skill = new Skill();
+      skill.ID = id;
+      skill.Name = name;
+
+      this.skillsService.addProjectSkill(this.Project, skill).then(id => {
+        this.CurrentProjectSkills.push(skill);
+      });   
+    })
   }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
 import { SkillsService } from '../skills.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-company',
@@ -9,7 +10,8 @@ import { SkillsService } from '../skills.service';
 })
 export class CompanyComponent implements OnInit {
   companies:Company[];
-
+  companyName:string;
+  
   constructor(private skillsService: SkillsService) { 
     this.skillsService.getCompanies()
     .then(companies =>
@@ -21,6 +23,15 @@ export class CompanyComponent implements OnInit {
         alert("Could not retrieve Company Data" + err); 
       }); 
   }  
+
+  public onSubmit(name) {
+    this.skillsService.addCompany(name).then(id => {
+      let company = new Company();
+      company.ID = id;
+      company.Name = name;
+      this.companies.push(company);
+    });   
+  }
 
   ngOnInit() {
   }

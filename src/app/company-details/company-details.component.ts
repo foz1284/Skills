@@ -24,19 +24,19 @@ export class CompanyDetailsComponent implements OnInit {
 
       this.skillsService.getCompanies()
       .then(companies =>
-        { 
-          companies.forEach(company => {
-            if(company.ID == this.RequestedCompanyId)
-              {
-                this.Company = company;
-              }
-          });
-        })
-      .catch(err => 
-        {
-          alert("Could not retrieve Company Data" + err); 
-          this.router.navigateByUrl('/company');
+      { 
+        companies.forEach(company => {
+          if(company.ID == this.RequestedCompanyId)
+            {
+              this.Company = company;
+            }
         });
+      })
+      .catch(err => 
+      {
+        alert("Could not retrieve Company Data" + err); 
+        this.router.navigateByUrl('/company');
+      });
         
         this.skillsService.getProjects()
         .then(Projects =>
@@ -61,7 +61,18 @@ export class CompanyDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  public onSubmit(name) {
+    this.skillsService.addProject(name).then(id => {
+      let project = new Project();
+      project.ID = id;
+      project.Name = name;
+
+      this.skillsService.addCompanyProject(this.Company, project).then(id => {
+        this.CurrentCompanyProjects.push(project);
+      });   
+    })
   }
 
+  ngOnInit() {
+  }
 }
