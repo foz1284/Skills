@@ -13,10 +13,12 @@ import 'rxjs/add/operator/toPromise';
 export class SkillsService {
   companies:Company[];
   constructor(private http: HttpClient) { }
+  rootURL:String = "http://localhost:8080/api.php/";
+
   getCompanies(): Promise<Company[]> {
     //return Promise.resolve(COMPANIES);
 
-     return this.http.get('http://localhost:8080/api.php/company?transform=1')
+     return this.http.get(this.rootURL + 'company?transform=1')
       .toPromise()
       .then(response =>
         {
@@ -28,7 +30,7 @@ export class SkillsService {
   getCompanyProjects(): Promise<CompanyProject[]> {
     //return Promise.resolve(CompanyProjects);
 
-     return this.http.get('http://localhost:8080/api.php/companyproject?transform=1')
+     return this.http.get(this.rootURL + 'companyproject?transform=1')
       .toPromise()
       .then(response =>
         {
@@ -40,7 +42,7 @@ export class SkillsService {
   getProjects(): Promise<Project[]> {
     //return Promise.resolve(CompanyProjects);
 
-     return this.http.get('http://localhost:8080/api.php/projects?transform=1')
+     return this.http.get(this.rootURL + 'projects?transform=1')
       .toPromise()
       .then(response =>
         {
@@ -52,7 +54,7 @@ export class SkillsService {
   getProjectSkills(): Promise<ProjectSkill[]> {
     //return Promise.resolve(CompanyProjects);
 
-     return this.http.get('http://localhost:8080/api.php/projectskill?transform=1')
+     return this.http.get(this.rootURL + 'projectskill?transform=1')
       .toPromise()
       .then(response =>
         {
@@ -64,7 +66,7 @@ export class SkillsService {
   getSkills(): Promise<Skill[]> {
     //return Promise.resolve(CompanyProjects);
 
-     return this.http.get('http://localhost:8080/api.php/skills?transform=1')
+     return this.http.get(this.rootURL + 'skills?transform=1')
       .toPromise()
       .then(response =>
         {
@@ -75,7 +77,7 @@ export class SkillsService {
 
   addCompany(name)
   {
-    return this.http.post("http://localhost:8080/api.php/company","{\"Name\":\"" + name + "\"}")
+    return this.http.post(this.rootURL + 'company',"{\"Name\":\"" + name + "\"}")
     .toPromise()
     .then(response =>
       {
@@ -86,7 +88,7 @@ export class SkillsService {
 
   deleteCompany(company:Company)
   {
-    return this.http.delete("http://localhost:8080/api.php/company/" + company.ID)
+    return this.http.delete(this.rootURL + 'company/' + company.ID)
     .toPromise()
     .then(response =>
       {
@@ -97,7 +99,7 @@ export class SkillsService {
 
   addProject(name)
   {
-    return this.http.post("http://localhost:8080/api.php/projects","{\"Name\":\"" + name + "\"}")
+    return this.http.post(this.rootURL + 'projects',"{\"Name\":\"" + name + "\"}")
     .toPromise()
     .then(response =>
       {
@@ -108,7 +110,7 @@ export class SkillsService {
 
   deleteProject(project:Project)
   {
-    return this.http.delete("http://localhost:8080/api.php/projects/" + project.ID)
+    return this.http.delete(this.rootURL + 'projects/' + project.ID)
     .toPromise()
     .then(response =>
       {
@@ -119,7 +121,7 @@ export class SkillsService {
   
   addCompanyProject(company:Company, project:Project)
   {
-    return this.http.post("http://localhost:8080/api.php/companyproject","{\"CompanyID\":\"" + company.ID + "\", \"ProjectID\":\"" + project.ID + "\"}")
+    return this.http.post(this.rootURL + 'companyproject',"{\"CompanyID\":\"" + company.ID + "\", \"ProjectID\":\"" + project.ID + "\"}")
     .toPromise()
     .then(response =>
       {
@@ -130,7 +132,7 @@ export class SkillsService {
 
   addSkill(name)
   {
-    return this.http.post("http://localhost:8080/api.php/skills","{\"Name\":\"" + name + "\"}")
+    return this.http.post(this.rootURL + 'skills',"{\"Name\":\"" + name + "\"}")
     .toPromise()
     .then(response =>
       {
@@ -141,7 +143,7 @@ export class SkillsService {
 
   deleteSkill(skill:Skill)
   {
-    return this.http.delete("http://localhost:8080/api.php/skills/" + skill.ID)
+    return this.http.delete(this.rootURL + 'api.php/skills/' + skill.ID)
     .toPromise()
     .then(response =>
       {
@@ -152,7 +154,7 @@ export class SkillsService {
   
   addProjectSkill(project:Project, skill:Skill)
   {
-    return this.http.post("http://localhost:8080/api.php/projectskill","{\"ProjectID\":\"" + project.ID + "\", \"SkillID\":\"" + skill.ID + "\"}")
+    return this.http.post(this.rootURL + 'projectskill',"{\"ProjectID\":\"" + project.ID + "\", \"SkillID\":\"" + skill.ID + "\"}")
     .toPromise()
     .then(response =>
       {
