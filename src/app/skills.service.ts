@@ -84,6 +84,17 @@ export class SkillsService {
       .catch(this.handleError); 
   }
 
+  deleteCompany(company)
+  {
+    return this.http.delete("http://localhost:8080/api.php/company/" + company.ID)
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+
   addProject(name)
   {
     return this.http.post("http://localhost:8080/api.php/projects","{\"Name\":\"" + name + "\"}")
