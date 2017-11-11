@@ -5,6 +5,9 @@
       <a class="list-group-item active" >
           Skills
       </a>
-      <a class="list-group-item" *ngFor="let skill of skills" href="/skill/{{skill.ID}}">{{skill.Name}}</a>
+      <a class="list-group-item" *ngFor="let skill of skills" href="/skill/{{skill.ID}}">
+        {{skill.Name}}
+        <span aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(skill)">&times;</span>
+    </a>
   </div>
 </div>

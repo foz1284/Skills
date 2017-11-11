@@ -25,12 +25,22 @@ export class CompanyComponent implements OnInit {
   }  
 
   public onSubmit(name) {
-    this.skillsService.addCompany(name).then(id => {
+    this.skillsService.addCompany(name)
+    .then(id => {
       let company = new Company();
       company.ID = id;
       company.Name = name;
       this.companies.push(company);
     });   
+  }
+
+  public onDelete(company:Company){
+    this.skillsService.deleteCompany(company)
+    .then(count => {
+      this.companies.splice(this.companies.indexOf(company), 1);
+    });
+
+    return false;
   }
 
   ngOnInit() {

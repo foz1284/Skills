@@ -21,7 +21,14 @@ export class SkillComponent implements OnInit {
         alert("Could not retrieve Skill Data" + err); 
       });   
  }
-
+ public onDelete(skill:Skill){
+  this.skillsService.deleteSkill(skill)
+  .then(count => {
+    this.skills.splice(this.skills.indexOf(skill), 1);
+  });
+  
+  return false;
+}
   ngOnInit() {
   }
 

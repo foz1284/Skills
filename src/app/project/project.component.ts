@@ -22,6 +22,15 @@ export class ProjectComponent implements OnInit {
       }); 
    }
 
+   public onDelete(project:Project){
+    this.skillsService.deleteProject(project)
+    .then(count => {
+      this.projects.splice(this.projects.indexOf(project), 1);
+    });
+
+    return false;
+  }
+
   ngOnInit() {
   }
 

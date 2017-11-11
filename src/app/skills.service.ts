@@ -84,7 +84,7 @@ export class SkillsService {
       .catch(this.handleError); 
   }
 
-  deleteCompany(company)
+  deleteCompany(company:Company)
   {
     return this.http.delete("http://localhost:8080/api.php/company/" + company.ID)
     .toPromise()
@@ -98,6 +98,17 @@ export class SkillsService {
   addProject(name)
   {
     return this.http.post("http://localhost:8080/api.php/projects","{\"Name\":\"" + name + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+
+  deleteProject(project:Project)
+  {
+    return this.http.delete("http://localhost:8080/api.php/projects/" + project.ID)
     .toPromise()
     .then(response =>
       {
@@ -120,6 +131,17 @@ export class SkillsService {
   addSkill(name)
   {
     return this.http.post("http://localhost:8080/api.php/skills","{\"Name\":\"" + name + "\"}")
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  }
+
+  deleteSkill(skill:Skill)
+  {
+    return this.http.delete("http://localhost:8080/api.php/skills/" + skill.ID)
     .toPromise()
     .then(response =>
       {
