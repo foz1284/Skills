@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 export class SkillsService {
   companies:Company[];
   constructor(private http: HttpClient) { }
-  rootURL:String = "http://localhost:8080/api.php/";
+  rootURL:String = "http://192.168.1.171:8080/api.php/";
 
   getCompanies(): Promise<Company[]> {
     //return Promise.resolve(COMPANIES);

@@ -16,7 +16,7 @@ export class ProjectDetailsComponent implements OnInit {
   private Project: Project;
   private CurrentProjectSkills: Skill[];
   private CurrentProjectCompanies: Company[];
-
+  private Skills: Skill[];
 
   public AddSkill(event, item) {
     alert('Open ' + item);
@@ -73,6 +73,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.skillsService.getSkills()
       .then(skills =>
       {
+        this.Skills = skills;
         this.skillsService.getProjectSkills()
         .then(projectSkills =>
           {
@@ -103,6 +104,12 @@ export class ProjectDetailsComponent implements OnInit {
         this.CurrentProjectSkills.push(skill);
       });   
     })
+  }
+
+  public onSelect(skill:Skill) {
+      this.skillsService.addProjectSkill(this.Project, skill).then(id => {
+        this.CurrentProjectSkills.push(skill);
+      });
   }
 
   ngOnInit() {
