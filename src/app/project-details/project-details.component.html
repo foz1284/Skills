@@ -21,7 +21,10 @@
               Add
           </button>
       </a>
-      <a class="list-group-item" *ngFor="let projectSkill of CurrentProjectSkills" href="/skill/{{projectSkill.ID}}">{{projectSkill.Name}}</a>
+      <a class="list-group-item" *ngFor="let projectSkill of CurrentProjectSkills" href="/skill/{{projectSkill.ID}}">
+        {{projectSkill.Name}}
+        <span aria-hidden="true" class="close" aria-label="Close" (click)="onDeleteLink(projectSkill)">&times;</span>
+      </a>
   </div>
 </div>
 

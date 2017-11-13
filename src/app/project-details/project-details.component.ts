@@ -112,6 +112,15 @@ export class ProjectDetailsComponent implements OnInit {
       });
   }
 
+  public onDeleteLink(skill:Skill){
+    this.skillsService.deleteProjectSkillHelper(this.Project, skill)
+    .then(count => {
+      this.CurrentProjectSkills.splice(this.CurrentProjectSkills.indexOf(skill), 1);
+    });
+    
+    return false;
+  }
+
   ngOnInit() {
   }
 

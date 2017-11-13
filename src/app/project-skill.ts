@@ -1,4 +1,5 @@
 export class ProjectSkill {
-    SkillID:number;
-    ProjectID:number;
+    public ID:number; 
+    public SkillID:number;
+    public ProjectID:number;
 }

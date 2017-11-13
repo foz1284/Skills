@@ -163,6 +163,36 @@ export class SkillsService {
       .catch(this.handleError); 
   }
 
+  deleteProjectSkillHelper(project:Project, skill:Skill)
+  {
+    return this.getProjectSkills().then(ProjectSkills => {
+        ProjectSkills.forEach(projectskill => {
+          {
+            if(projectskill.ProjectID == project.ID && projectskill.SkillID == skill.ID)
+            {
+              this.deleteProjectSkill(projectskill)
+              .then(response =>
+                {
+                    return response;
+                })
+                .catch(this.handleError); 
+            }
+          } 
+        });
+    });
+  }
+
+  deleteProjectSkill(projectSkill:ProjectSkill)
+  {
+    return this.http.delete(this.rootURL + 'projectskill/' + projectSkill.ID)
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  } 
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data['company'] || { };
