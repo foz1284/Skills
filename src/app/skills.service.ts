@@ -143,7 +143,7 @@ export class SkillsService {
 
   deleteSkill(skill:Skill)
   {
-    return this.http.delete(this.rootURL + 'api.php/skills/' + skill.ID)
+    return this.http.delete(this.rootURL + 'skills/' + skill.ID)
     .toPromise()
     .then(response =>
       {
