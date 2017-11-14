@@ -25,10 +25,11 @@
       <a class="list-group-item" *ngFor="let companyProject of CurrentCompanyProjects" href="/project/{{companyProject.ID}}">{{companyProject.Name}}</a>
   </div>
 
-  <div class="list-group" >
-      <a class="list-group-item active" >
-          Skills
-      </a>
+    <div class="list-group" >
+        <a class="list-group-item active" >
+            Skills
+        </a>
+        <a class="list-group-item" *ngFor="let companySkill of CurrentCompanySkills" href="/skill/{{companySkill.ID}}">{{companySkill.Name}}</a>
     </div>
 </div>
 

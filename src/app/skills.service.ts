@@ -4,7 +4,7 @@ import { CompanyProject } from './company-Project';
 import { Project } from './Project';
 import { ProjectSkill } from './project-skill';
 import { Skill } from './Skill';
-import { COMPANIES } from './companies';
+//import { COMPANIES } from './companies';
 import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -32,7 +32,7 @@ export class SkillsService {
 
      return this.http.get(this.rootURL + 'companyproject?transform=1')
       .toPromise()
-      .then(response =>
+      .then(response => 
         {
             return response['companyproject'] as CompanyProject[];
         })

@@ -1,14 +1,6 @@
 import { Company } from './company';
 
-export const COMPANIES: Company[] = [
- { ID: 11, Name: 'Mr. Nice' },
- { ID: 12, Name: 'Narco' },
- { ID: 13, Name: 'Bombasto' },
- { ID: 14, Name: 'Celeritas' },
- { ID: 15, Name: 'Magneta' },
- { ID: 16, Name: 'RubberMan' },
- { ID: 17, Name: 'Dynama' },
- { ID: 18, Name: 'Dr IQ' },
- { ID: 19, Name: 'Magma' },
- { ID: 20, Name: 'Tornado' }
-];
+// export const COMPANIES: Company[] = [
+//  { ID: 11, Name: 'Mr. Nice', StartDate:new Date("February 4, 2016 10:13:00"), EndDate:new Date("February 4, 2016 10:13:00")},
+//  { ID: 12, Name: 'Narco', StartDate:new Date("February 4, 2016 10:13:00"), EndDate:new Date("February 4, 2016 10:13:00")}
+// ];
