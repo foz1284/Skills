@@ -3,12 +3,12 @@
   <div class="list-group" >
     <a class="list-group-item active" >
         Companies
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button *ngIf="Editor" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Add
         </button>
     </a>
     <a class="list-group-item" href="/company/{{company.ID}}" *ngFor="let company of companies">{{company.Name}}
-        <span aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(company)">&times;</span>
+        <span *ngIf="Editor" aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(company)">&times;</span>
     </a>
   </div>
 </div>

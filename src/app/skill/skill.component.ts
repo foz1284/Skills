@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from '../skills.service';
 import { Skill } from '../skill';
+import { SkillBaseComponent } from '../skill-base-component';
 
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
   styleUrls: ['./skill.component.sass']
 })
-export class SkillComponent implements OnInit {
+export class SkillComponent extends SkillBaseComponent implements OnInit {
   skills:Skill[];
 
   constructor(private skillsService: SkillsService) {
+    super(skillsService);
+
     this.skillsService.getSkills()
     .then(skills =>
       { 

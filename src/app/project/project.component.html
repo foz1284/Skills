@@ -8,7 +8,7 @@
 
         <a class="list-group-item" *ngFor="let project of projects" href="/project/{{project.ID}}">
             {{project.Name}}
-            <span aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(project)">&times;</span>
+            <span *ngIf="Editor" aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(project)">&times;</span>
         </a>
     </div>
 </div>

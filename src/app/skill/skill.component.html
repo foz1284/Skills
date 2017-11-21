@@ -7,7 +7,7 @@
       </a>
       <a class="list-group-item" *ngFor="let skill of skills" href="/skill/{{skill.ID}}">
         {{skill.Name}}
-        <span aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(skill)">&times;</span>
+        <span *ngIf="Editor" aria-hidden="true" class="close" aria-label="Close" (click)="onDelete(skill)">&times;</span>
     </a>
   </div>
 </div>

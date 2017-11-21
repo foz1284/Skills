@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from '../skills.service';
 import { Project } from '../project';
+import { SkillBaseComponent } from '../skill-base-component';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.sass']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent extends SkillBaseComponent  implements OnInit {
   projects:Project[];
 
   constructor(private skillsService: SkillsService) {
+    super(skillsService);
+
     this.skillsService.getProjects()
     .then(projects =>
       { 

@@ -9,11 +9,18 @@ import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+
+
 @Injectable()
 export class SkillsService {
   companies:Company[];
   constructor(private http: HttpClient) { }
-  rootURL:String = "http://192.168.1.171:8080/api.php/";
+  //rootURL:String = "http://192.168.1.171:8080/api.php/";
+  rootURL:String = "http://localhost:8080/api.php/";
+
+  UserIsEditor(): boolean{
+    return true;
+  }
 
   getCompanies(): Promise<Company[]> {
     //return Promise.resolve(COMPANIES);
@@ -129,6 +136,36 @@ export class SkillsService {
       })
       .catch(this.handleError); 
   }
+
+  deleteCompanyProjectHelper(company: Company, project:Project)
+  {
+    return this.getCompanyProjects().then(companyProjects => {
+      companyProjects.forEach(companyProject => {
+          {
+            if(companyProject.CompanyID == company.ID && companyProject.ProjectID == project.ID)
+            {
+              this.deleteCompanyProject(companyProject)
+              .then(response =>
+                {
+                    return response;
+                })
+                .catch(this.handleError); 
+            }
+          } 
+        });
+    });
+  }
+
+  deleteCompanyProject(companyProject:CompanyProject)
+  {
+    return this.http.delete(this.rootURL + 'companyProject/' + companyProject.ID)
+    .toPromise()
+    .then(response =>
+      {
+          return response;
+      })
+      .catch(this.handleError); 
+  } 
 
   addSkill(name)
   {

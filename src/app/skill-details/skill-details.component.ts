@@ -4,18 +4,21 @@ import { Router } from '@angular/router';
 import { SkillsService } from '../skills.service';
 import { Skill } from '../skill';
 import { Project } from '../project';
+import { SkillBaseComponent } from '../skill-base-component';
 
 @Component({
   selector: 'app-skill-details',
   templateUrl: './skill-details.component.html',
   styleUrls: ['./skill-details.component.sass']
 })
-export class SkillDetailsComponent implements OnInit {
+export class SkillDetailsComponent extends SkillBaseComponent  implements OnInit {
   private CurrentSkillProjects: Project[];
   private RequestedSkillId: number;
   private Skill: Skill;
 
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) { 
+    super(skillsService);
+    
     this.CurrentSkillProjects = [];
     this.route.params.subscribe( params => {
       this.RequestedSkillId = +params['id']; 

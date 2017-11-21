@@ -7,6 +7,8 @@ import { CompanyProject } from '../company-project';
 import { Project } from '../project';
 import { ProjectSkill } from '../project-skill';
 import { Skill } from '../skill';
+import { SkillComponent } from '../skill/skill.component';
+import { SkillBaseComponent } from '../skill-base-Component';
 
 @Component({
   selector: 'app-company-details',
@@ -14,15 +16,19 @@ import { Skill } from '../skill';
   styleUrls: ['./company-details.component.sass']
 })
 
-export class CompanyDetailsComponent implements OnInit {
+export class CompanyDetailsComponent extends SkillBaseComponent implements OnInit {
   private RequestedCompanyId: number;
   private Company: Company;
   private CurrentCompanyProjects: Project[];
   private CurrentCompanySkills: Skill[];
+
   
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) {
+    super(skillsService);
+
     this.CurrentCompanyProjects = [];
     this.CurrentCompanySkills = [];
+
     this.route.params.subscribe( params => {
       this.RequestedCompanyId = +params['id']; 
 
@@ -52,7 +58,6 @@ export class CompanyDetailsComponent implements OnInit {
               .then(companyProjects =>
                 {
                 companyProjects.forEach(companyProject => {
-            
                   if(companyProject.CompanyID == this.RequestedCompanyId)
                     {
                       Projects.forEach(project => {
@@ -98,7 +103,15 @@ export class CompanyDetailsComponent implements OnInit {
       })		
   }
 
-  ngOnInit() {
+  public onDeleteLink(project:Project){
+    this.skillsService.deleteCompanyProjectHelper(this.Company, project)
+    .then(count => {
+      this.CurrentCompanyProjects.splice(this.CurrentCompanyProjects.indexOf(project), 1);
+    });
+    
+    return false;
   }
 
+  ngOnInit() {
+  }
 }

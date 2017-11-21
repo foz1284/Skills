@@ -5,13 +5,14 @@ import { SkillsService } from '../skills.service';
 import { Project } from '../project';
 import { Skill } from '../skill';
 import { Company } from '../company';
+import { SkillBaseComponent } from '../skill-base-component';
 
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.sass']
 })
-export class ProjectDetailsComponent implements OnInit {
+export class ProjectDetailsComponent extends SkillBaseComponent implements OnInit {
   private RequestedProjectId: number;
   private Project: Project;
   private CurrentProjectSkills: Skill[];
@@ -27,6 +28,8 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private router: Router, private skillsService: SkillsService) { 
+    super(skillsService);
+
     this.CurrentProjectSkills = [];
     this.CurrentProjectCompanies = [];
     this.route.params.subscribe( params => {

@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../company';
 import { SkillsService } from '../skills.service';
 import { NgForm } from '@angular/forms';
+import { SkillBaseComponent } from '../skill-base-component';
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.sass']
 })
-export class CompanyComponent implements OnInit {
+export class CompanyComponent extends SkillBaseComponent  implements OnInit {
   companies:Company[];
   companyName:string;
   
   constructor(private skillsService: SkillsService) { 
+    super(skillsService);
     this.skillsService.getCompanies()
     .then(companies =>
       { 
